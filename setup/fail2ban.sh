@@ -1,4 +1,4 @@
-#!/bin/bash
+##!/bin/bash
 # Fail2Ban Service
 # ---------------------------------------------------------------
 
@@ -10,15 +10,15 @@
 
 source setup/functions.sh # load our functions
 
-yum --assumeyes --quiet install fail2ban
+#yum --assumeyes --quiet install fail2ban
 
 # Configure the Fail2Ban installation to prevent dumb bruce-force attacks 
 # against dovecot, postfix, ssh, etc.
-cat conf/fail2ban/jails.conf \
-        | sed "s/PUBLIC_IP/$PUBLIC_IP/g" \
-        | sed "s#STORAGE_ROOT#$STORAGE_ROOT#" \
-        > /etc/fail2ban/jail.d/mailinabox.conf
-cp -f conf/fail2ban/filter.d/* /etc/fail2ban/filter.d/
+#cat conf/fail2ban/jails.conf \
+#        | sed "s/PUBLIC_IP/$PUBLIC_IP/g" \
+#        | sed "s#STORAGE_ROOT#$STORAGE_ROOT#" \
+#        > /etc/fail2ban/jail.d/mailinabox.conf
+#cp -f conf/fail2ban/filter.d/* /etc/fail2ban/filter.d/
 
 # On first installation, the log files that the jails look at don't all exist.
 # e.g., The roundcube error log isn't normally created until someone logs into
